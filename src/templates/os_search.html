@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class="title">OpenSearch (dev)</h1>
+
+  <form method="get" action="/os" style="margin: 1rem 0">
+    <input name="q" placeholder="Search…" value="{{ q|e }}" style="width: 420px">
+    <input name="size" type="number" value="{{ request.args.get('size', 10) }}" min="1" max="50">
+    <button type="submit">Search</button>
+  </form>
+
+  {% if results.total %}
+    <p><strong>{{ results.total }}</strong> matches</p>
+    <ol>
+      {% for h in results.hits %}
+        <li style="margin: .5rem 0">
+          <div><strong>{{ h.title }}</strong></div>
+          <div>{{ h.journal }} — {{ h.year }} — score {{ "%.3f"|format(h.score or 0) }}</div>
+          {% if h.pmid %}
+            <div><a href="https://pubmed.ncbi.nlm.nih.gov/{{ h.pmid }}/" target="_blank">PubMed</a></div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  {% elif q %}
+    <p>No results.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "components/search_box.html" import search_box %}
+{% from "components/feedback_form.html" import feedback_form %}
+{% from "components/results_display.html" import results_display %}
+
+{% block title %}SageMind - Research Assistant{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <!-- Search Section -->
+    {{ search_box() }}
+
+    <!-- Results Section -->
+    {{ results_display() }}
+
+    <!-- Feedback Section -->
+    {{ feedback_form() }}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Any page-specific JavaScript can go here
+</script>
+{% endblock %} 

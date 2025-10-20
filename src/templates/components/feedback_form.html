@@ -1,0 +1,49 @@
+{% macro feedback_form() %}
+<form id="feedbackForm" class="feedback-form">
+    <h3>How would you rate this response?</h3>
+    
+    <!-- Question Type -->
+    <div class="question-type">
+        <h4>Question Type</h4>
+        <div class="radio-group">
+            {% for type in ['research', 'solution_based', 'concept', 'coding'] %}
+            <div>
+                <input type="radio" id="{{ type }}" name="question_type" value="{{ type }}" 
+                       {% if loop.first %}required{% endif %}>
+                <label for="{{ type }}">{{ type|title }}</label>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Rating Sliders -->
+    {% for metric in metrics %}
+    <div class="rating-item">
+        <label for="{{ metric.id }}">{{ metric.label }} (1-7):</label>
+        <input type="range" class="slider" id="{{ metric.id }}" name="{{ metric.name }}" 
+               min="1" max="7" value="4">
+        <span class="slider-value">4</span>
+    </div>
+    {% endfor %}
+
+    <!-- Tags -->
+    {{ tag_section('Weakness / Issue Tags', weakness_tags, 'weakness') }}
+    {{ tag_section('Strength Tags', strength_tags, 'strength') }}
+
+    <button type="submit">Submit Feedback</button>
+</form>
+{% endmacro %}
+
+{% macro tag_section(title, tags, name) %}
+<div class="tag-sections">
+    <h4>{{ title }}</h4>
+    <div class="tag-options">
+        {% for tag in tags %}
+        <label>
+            <input type="checkbox" name="{{ name }}" value="{{ tag.value }}">
+            {{ tag.label }}
+        </label>
+        {% endfor %}
+    </div>
+</div>
+{% endmacro %} 

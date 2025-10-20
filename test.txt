@@ -1,0 +1,11 @@
+This is a test file to verify that the file editing system is working properly.
+This is a new line that I'm adding to make the changes more visible. 
+
+@search_bp.route('/search', methods=['POST'])
+def search():
+    try:
+        result = ai_service.process_search(...)
+        return jsonify(result)
+    except Exception as e:
+        logger.error(f"Search error: {str(e)}", exc_info=True)
+        return jsonify({"error": "An error occurred during search"}), 500 

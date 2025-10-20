@@ -1,0 +1,409 @@
+<div id="feedbackSection" class="feedback-form">
+    <form id="feedbackForm">
+        <h3>How would you rate this response?</h3>
+        
+        <!-- Topic Selection -->
+        <div class="topic-selection">
+            <label>Topics (select up to 2):</label>
+            <div class="checkbox-group">
+                <input type="checkbox" id="medicine" name="topics" value="medicine">
+                <label for="medicine">Medicine</label>
+                
+                <input type="checkbox" id="biology" name="topics" value="biology">
+                <label for="biology">Biology</label>
+                
+                <input type="checkbox" id="physics" name="topics" value="physics_mathematics">
+                <label for="physics">Physics/Mathematics</label>
+                
+                <input type="checkbox" id="public_health" name="topics" value="public_health">
+                <label for="public_health">Public Health</label>
+                
+                <input type="checkbox" id="psychology" name="topics" value="psychology_behavior">
+                <label for="psychology">Psychology/Behavior</label>
+                
+                <input type="checkbox" id="education" name="topics" value="education_meta_science">
+                <label for="education">Education/Meta-science</label>
+            </div>
+        </div>
+
+        <!-- Add this after the topic selection and before the metrics -->
+        <div class="question-type">
+            <h4>Question Type</h4>
+            <div class="radio-group">
+                <div>
+                    <input type="radio" id="research" name="question_type" value="research" required>
+                    <label for="research" title="Scientific papers and research findings">Research</label>
+                </div>
+                <div>
+                    <input type="radio" id="solution" name="question_type" value="solution_based">
+                    <label for="solution" title="Math, physics, or computational problems">Solution-Based</label>
+                </div>
+                <div>
+                    <input type="radio" id="concept" name="question_type" value="concept">
+                    <label for="concept" title="General knowledge and concept explanations">Concept Explanation</label>
+                </div>
+                <div>
+                    <input type="radio" id="coding" name="question_type" value="coding">
+                    <label for="coding" title="Programming and code-related questions">Coding</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rating sliders -->
+        <div class="slider-group">
+            <div class="rating-item">
+                <label for="ai_clarity">AI Clarity (1-7):</label>
+                <input type="range" class="slider" id="ai_clarity" name="ai_clarity" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+            
+            <div class="rating-item">
+                <label for="paper_interpretation">Paper Interpretation (1-7):</label>
+                <input type="range" class="slider" id="paper_interpretation" name="paper_interpretation" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+            
+            <div class="rating-item">
+                <label for="topic_relevance">Topic Relevance (1-7):</label>
+                <input type="range" class="slider" id="topic_relevance" name="topic_relevance" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+            
+            <div class="rating-item">
+                <label for="response_depth">Response Depth (1-7):</label>
+                <input type="range" class="slider" id="response_depth" name="response_depth" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+            
+            <div class="rating-item">
+                <label for="citations_quality">Citations Quality (1-7):</label>
+                <input type="range" class="slider" id="citations_quality" name="citations_quality" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+            
+            <div class="rating-item">
+                <label for="ai_reasoning">AI Reasoning (1-7):</label>
+                <input type="range" class="slider" id="ai_reasoning" name="ai_reasoning" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+        </div>
+
+        <!-- Tag sections -->
+        <div class="tag-sections">
+            <h4>Weakness / Issue Tags</h4>
+            <div class="tag-options">
+                <label><input type="checkbox" name="weakness" value="too_generic"> Too Generic</label>
+                <label><input type="checkbox" name="weakness" value="missing_citation"> Missing Citation</label>
+                <label><input type="checkbox" name="weakness" value="incorrect_inference"> Incorrect Inference</label>
+                <label><input type="checkbox" name="weakness" value="misinterpreted_study"> Misinterpreted Study</label>
+                <label><input type="checkbox" name="weakness" value="not_relevant"> Not Relevant</label>
+                <label><input type="checkbox" name="weakness" value="lacks_depth"> Lacks Depth</label>
+                <label><input type="checkbox" name="weakness" value="needs_simplification"> Needs Simplification</label>
+                <label><input type="checkbox" name="weakness" value="repetitive"> Repetitive</label>
+                <label><input type="checkbox" name="weakness" value="unverifiable_claim"> Unverifiable Claim</label>
+            </div>
+        </div>
+        
+        <div class="tag-sections">
+            <h4>Strength Tags</h4>
+            <div class="tag-options">
+                <label><input type="checkbox" name="strength" value="strong_explanation"> Strong Explanation</label>
+                <label><input type="checkbox" name="strength" value="clear_reasoning"> Clear Reasoning</label>
+                <label><input type="checkbox" name="strength" value="excellent_sources"> Excellent Sources</label>
+                <label><input type="checkbox" name="strength" value="good_simplification"> Good Simplification</label>
+                <label><input type="checkbox" name="strength" value="insightful"> Insightful</label>
+                <label><input type="checkbox" name="strength" value="well_structured"> Well Structured</label>
+            </div>
+        </div>
+
+        <!-- Original Response Feedback -->
+        <h3>Original Response Feedback</h3>
+        <!-- ... existing metrics and tags ... -->
+
+        <!-- Revised Response Feedback -->
+        <h3>Revised Response Feedback</h3>
+        <div class="slider-group">
+            <div class="rating-item">
+                <label for="revised_ai_clarity">AI Clarity (1-7):</label>
+                <input type="range" class="slider" id="revised_ai_clarity" name="revised_ai_clarity" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+            
+            <div class="rating-item">
+                <label for="revised_paper_interpretation">Paper Interpretation (1-7):</label>
+                <input type="range" class="slider" id="revised_paper_interpretation" name="revised_paper_interpretation" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+            
+            <div class="rating-item">
+                <label for="revised_topic_relevance">Topic Relevance (1-7):</label>
+                <input type="range" class="slider" id="revised_topic_relevance" name="revised_topic_relevance" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+            
+            <div class="rating-item">
+                <label for="revised_response_depth">Response Depth (1-7):</label>
+                <input type="range" class="slider" id="revised_response_depth" name="revised_response_depth" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+            
+            <div class="rating-item">
+                <label for="revised_citations_quality">Citations Quality (1-7):</label>
+                <input type="range" class="slider" id="revised_citations_quality" name="revised_citations_quality" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+            
+            <div class="rating-item">
+                <label for="revised_ai_reasoning">AI Reasoning (1-7):</label>
+                <input type="range" class="slider" id="revised_ai_reasoning" name="revised_ai_reasoning" min="1" max="7" value="4">
+                <span class="slider-value">4</span>
+            </div>
+        </div>
+
+        <!-- Revised Tag sections -->
+        <div class="tag-sections">
+            <h4>Revised Weakness / Issue Tags</h4>
+            <div class="tag-options">
+                <label><input type="checkbox" name="revised_weakness" value="too_generic"> Too Generic</label>
+                <label><input type="checkbox" name="revised_weakness" value="missing_citation"> Missing Citation</label>
+                <label><input type="checkbox" name="revised_weakness" value="incorrect_inference"> Incorrect Inference</label>
+                <label><input type="checkbox" name="revised_weakness" value="misinterpreted_study"> Misinterpreted Study</label>
+                <label><input type="checkbox" name="revised_weakness" value="not_relevant"> Not Relevant</label>
+                <label><input type="checkbox" name="revised_weakness" value="lacks_depth"> Lacks Depth</label>
+                <label><input type="checkbox" name="revised_weakness" value="needs_simplification"> Needs Simplification</label>
+                <label><input type="checkbox" name="revised_weakness" value="repetitive"> Repetitive</label>
+                <label><input type="checkbox" name="revised_weakness" value="unverifiable_claim"> Unverifiable Claim</label>
+            </div>
+        </div>
+
+        <div class="tag-sections">
+            <h4>Revised Strength Tags</h4>
+            <div class="tag-options">
+                <label><input type="checkbox" name="revised_strength" value="strong_explanation"> Strong Explanation</label>
+                <label><input type="checkbox" name="revised_strength" value="clear_reasoning"> Clear Reasoning</label>
+                <label><input type="checkbox" name="revised_strength" value="excellent_sources"> Excellent Sources</label>
+                <label><input type="checkbox" name="revised_strength" value="good_simplification"> Good Simplification</label>
+                <label><input type="checkbox" name="revised_strength" value="insightful"> Insightful</label>
+                <label><input type="checkbox" name="revised_strength" value="well_structured"> Well Structured</label>
+            </div>
+        </div>
+
+        <button type="submit" id="submitFeedback">Submit Feedback</button>
+    </form>
+</div>
+
+<style>
+.topic-selection {
+    margin-bottom: 20px;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.checkbox-group label {
+    margin-left: 5px;
+}
+
+.slider-group {
+    margin-bottom: 20px;
+}
+
+.slider-group label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: help;
+}
+
+.slider {
+    width: 300px;
+}
+
+.slider-value {
+    margin-left: 10px;
+}
+
+/* Add these styles */
+.tags-section {
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.weakness-tags, .strength-tags {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.weakness-tags h4 {
+    color: #d32f2f;
+    margin-top: 0;
+}
+
+.strength-tags h4 {
+    color: #388e3c;
+    margin-top: 0;
+}
+
+.tags-section .checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.tags-section .checkbox-group div {
+    display: flex;
+    align-items: center;
+}
+
+.tags-section input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.question-type {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.radio-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.radio-group div {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 8px;
+}
+
+.radio-group label {
+    cursor: help;
+}
+</style>
+
+<script>
+function resetForm() {
+    // Reset all sliders (both original and revised)
+    document.querySelectorAll('.slider').forEach(slider => {
+        slider.value = 4;
+        slider.nextElementSibling.textContent = '4';
+    });
+    
+    // Reset all checkboxes (both original and revised)
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+    });
+}
+
+// Limit topic selection to 2
+document.querySelectorAll('input[name="topics"]').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+        const checkedTopics = document.querySelectorAll('input[name="topics"]:checked');
+        if (checkedTopics.length > 2) {
+            this.checked = false;
+        }
+    });
+});
+
+document.getElementById('searchButton').addEventListener('click', resetForm);
+
+document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Get original feedback data
+    const weaknessTags = Array.from(document.querySelectorAll('input[name="weakness"]:checked'))
+        .map(checkbox => checkbox.value);
+        
+    const strengthTags = Array.from(document.querySelectorAll('input[name="strength"]:checked'))
+        .map(checkbox => checkbox.value);
+    
+    // Get revised feedback data
+    const revisedWeaknessTags = Array.from(document.querySelectorAll('input[name="revised_weakness"]:checked'))
+        .map(checkbox => checkbox.value);
+        
+    const revisedStrengthTags = Array.from(document.querySelectorAll('input[name="revised_strength"]:checked'))
+        .map(checkbox => checkbox.value);
+    
+    const currentQuery = document.getElementById('searchInput').value;
+    const aiResponse = document.getElementById('analysisSection').textContent;
+    
+    const data = {
+        user_query: currentQuery,
+        ai_response: aiResponse,
+        question_type: document.querySelector('input[name="question_type"]:checked')?.value || 'research',
+        
+        // Original metrics
+        metrics: {
+            clarity: parseInt(document.getElementById('ai_clarity').value),
+            interpretation: parseInt(document.getElementById('paper_interpretation').value),
+            relevance: parseInt(document.getElementById('topic_relevance').value),
+            depth: parseInt(document.getElementById('response_depth').value),
+            citations_quality: parseInt(document.getElementById('citations_quality').value),
+            reasoning: parseInt(document.getElementById('ai_reasoning').value)
+        },
+        
+        // Original tags
+        strength_tags: strengthTags,
+        weakness_tags: weaknessTags,
+        
+        // Revised metrics
+        revised_metrics: {
+            clarity: parseInt(document.getElementById('revised_ai_clarity').value),
+            interpretation: parseInt(document.getElementById('revised_paper_interpretation').value),
+            relevance: parseInt(document.getElementById('revised_topic_relevance').value),
+            depth: parseInt(document.getElementById('revised_response_depth').value),
+            citations_quality: parseInt(document.getElementById('revised_citations_quality').value),
+            reasoning: parseInt(document.getElementById('revised_ai_reasoning').value)
+        },
+        
+        // Revised tags
+        revised_tags: {
+            strengths: revisedStrengthTags,
+            improvements: revisedWeaknessTags
+        }
+    };
+    
+    try {
+        const response = await fetch('/feedback', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const confirmMessage = document.createElement('div');
+            confirmMessage.textContent = 'Feedback submitted successfully!';
+            confirmMessage.style.color = 'green';
+            confirmMessage.style.marginTop = '10px';
+            this.appendChild(confirmMessage);
+            resetForm();
+        }
+    } catch (error) {
+        console.error('Error submitting feedback:', error);
+    }
+});
+
+// Initialize slider values
+document.querySelectorAll('.slider').forEach(slider => {
+    const valueDisplay = slider.nextElementSibling;
+    valueDisplay.textContent = slider.value;
+    
+    slider.oninput = function() {
+        valueDisplay.textContent = this.value;
+    }
+});
+</script>

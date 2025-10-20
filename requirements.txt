@@ -1,0 +1,53 @@
+# Web Framework
+Flask[async]==3.0.0
+
+flask-cors==4.0.0
+
+# Database
+SQLAlchemy==2.0.23
+psycopg2-binary==2.9.9
+alembic==1.12.1
+
+# HTTP Requests
+requests==2.31.0
+
+# Data Processing
+pandas==2.1.3
+numpy>=1.26.4
+
+# XML Processing
+lxml==4.9.3
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Type Hints
+typing-extensions>=4.12.2
+
+# Development Tools
+black==23.11.0
+pylint==3.0.2
+pytest>=7.0.0
+
+# Feedparser
+feedparser==6.0.10
+
+# New packages
+faiss-cpu>=1.7.4
+nltk>=3.8.1
+tenacity>=8.2.2
+
+aiohttp==3.9.5
+
+#boto3
+opensearch-py
+gunicorn
+urllib3
+requests-aws4auth
+openai>=1.0.0
+sentence-transformers
+wikipedia
+
+
+
+

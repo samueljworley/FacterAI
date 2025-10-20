@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SageMind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/search.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/feedback.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <h2>History</h2>
+            <div class="search-history">
+                <div class="no-history-message">
+                    <span class="icon">🕒</span>
+                    <p>Search history will appear here</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1>SageMind</h1>
+            <p class="subtitle">Your AI Research Assistant for Medicine & Biology</p>
+            
+            <!-- Question Type Selector - Hidden since only Research is available -->
+            <div class="question-type-selector" style="display: none;">
+                <div class="type-toggle">
+                    <input type="radio" id="research" name="query_type" value="research" checked>
+                    <label for="research">
+                        <span class="icon">🔬</span>
+                        Research
+                    </label>
+
+                    <!-- Temporarily disabled for medicine/biology focus -->
+                    <!--
+                    <input type="radio" id="mathPhysics" name="query_type" value="solution_based">
+                    <label for="mathPhysics">
+                        <span class="icon">🧮</span>
+                        Math/Physics
+                    </label>
+
+                    <input type="radio" id="concept" name="query_type" value="concept">
+                    <label for="concept">
+                        <span class="icon">💡</span>
+                        Concepts
+                    </label>
+
+                    <input type="radio" id="coding" name="query_type" value="coding">
+                    <label for="coding">
+                        <span class="icon">💻</span>
+                        Coding
+                    </label>
+                    -->
+                </div>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Ask any question...">
+                <button id="searchButton" class="ask-button">
+                    <span class="button-text">Ask</span>
+                    <div class="spinner"></div>
+                </button>
+            </div>
+            <div class="search-container">
+  <input type="text" id="searchInput" placeholder="Ask any question...">
+  <button id="searchButton" class="ask-button">
+    <span class="button-text">Ask</span>
+    <div class="spinner"></div>
+  </button>
+</div>
+
+<!-- Results Area -->
+<div id="results"></div>
+<!-- Instant citations (OpenSearch) -->
+<div id="instant-row" style="margin:12px 0;">
+    <a id="os-dev-link" href="#" target="_blank" style="display:none; margin-right:10px;">OpenSearch (dev)</a>
+    <span id="os-count" style="display:none;"></span>
+  </div>
+  <div id="os-quick-list" style="margin:8px 0 16px;"></div>
+  
+
+            <!-- Results Area -->
+            <div id="results"></div>
+
+            <!-- Feedback Form -->
+            <div id="feedbackForm" class="feedback-form">
+                <h3>Rate this Response</h3>
+                
+                <!-- Sliders -->
+                <div class="slider-group">
+                    <div class="slider-container">
+                        <label>AI Clarity</label>
+                        <input type="range" name="ai_clarity" min="1" max="7" value="4" class="slider">
+                        <span class="slider-value">4</span>
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label>Paper Interpretation</label>
+                        <input type="range" name="paper_interpretation" min="1" max="7" value="4" class="slider">
+                        <span class="slider-value">4</span>
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label>Topic Relevance</label>
+                        <input type="range" name="topic_relevance" min="1" max="7" value="4" class="slider">
+                        <span class="slider-value">4</span>
+                    </div>
+
+                    <div class="slider-container">
+                        <label>Response Depth</label>
+                        <input type="range" name="response_depth" min="1" max="7" value="4" class="slider">
+                        <span class="slider-value">4</span>
+                    </div>
+
+                    <div class="slider-container">
+                        <label>Citations Quality</label>
+                        <input type="range" name="citations_quality" min="1" max="7" value="4" class="slider">
+                        <span class="slider-value">4</span>
+                    </div>
+
+                    <div class="slider-container">
+                        <label>AI Reasoning</label>
+                        <input type="range" name="ai_reasoning" min="1" max="7" value="4" class="slider">
+                        <span class="slider-value">4</span>
+                    </div>
+                </div>
+
+                <!-- Question Type -->
+                <div class="tags-section">
+                    <h4>Question Type</h4>
+                    <div class="tag-group">
+                        <label class="tag"><input type="radio" name="question_type" value="research">Research</label>
+                        <!-- Temporarily disabled for medicine/biology focus -->
+                        <!--
+                        <label class="tag"><input type="radio" name="question_type" value="solution_based">Math/Physics</label>
+                        <label class="tag"><input type="radio" name="question_type" value="concept">Concept</label>
+                        <label class="tag"><input type="radio" name="question_type" value="coding">Coding</label>
+                        -->
+                    </div>
+
+                    <h4>Strengths</h4>
+                    <div class="tag-group">
+                        <label class="tag"><input type="checkbox" name="strength" value="clear_explanation">Clear Explanation</label>
+                        <label class="tag"><input type="checkbox" name="strength" value="well_structured">Well Structured</label>
+                        <label class="tag"><input type="checkbox" name="strength" value="good_examples">Good Examples</label>
+                        <label class="tag"><input type="checkbox" name="strength" value="thorough">Thorough</label>
+                        <label class="tag"><input type="checkbox" name="strength" value="good_citations">Good Citations</label>
+                        <label class="tag"><input type="checkbox" name="strength" value="practical">Practical</label>
+                    </div>
+
+                    <h4>Areas for Improvement</h4>
+                    <div class="tag-group">
+                        <label class="tag"><input type="checkbox" name="weakness" value="unclear">Unclear</label>
+                        <label class="tag"><input type="checkbox" name="weakness" value="needs_examples">Needs Examples</label>
+                        <label class="tag"><input type="checkbox" name="weakness" value="needs_citations">Needs Citations</label>
+                        <label class="tag"><input type="checkbox" name="weakness" value="too_basic">Too Basic</label>
+                        <label class="tag"><input type="checkbox" name="weakness" value="too_complex">Too Complex</label>
+                        <label class="tag"><input type="checkbox" name="weakness" value="off_topic">Off Topic</label>
+                    </div>
+                </div>
+
+                <button type="submit" id="submit-feedback" class="submit-feedback">Submit Feedback</button>
+            </div>
+
+            <!-- Revision section -->
+            <div class="revision-section">
+                <h3>Prompt Revision</h3>
+                <div class="revision-container">
+                    <div class="textarea-container">
+                        <label for="revised-prompt">Revised Prompt:</label>
+                        <textarea 
+                            id="revised-prompt" 
+                            name="revised_prompt" 
+                            rows="4" 
+                            maxlength="500"
+                            placeholder="Enter your revised version of the prompt..."
+                        ></textarea>
+                        <div class="char-counter">
+                            <span id="char-count">0</span>/500 characters
+                        </div>
+                    </div>
+                    <button id="generate-revised" class="generate-button">
+                        <span class="button-text">Generate Revised Response</span>
+                        <div class="spinner hidden"></div>
+                    </button>
+                    <div class="revised-response-container">
+                        <label for="revised-response">Revised Response:</label>
+                        <div id="revised-response" class="revised-response"></div>
+                        
+                        <!-- Add revised feedback form here, initially hidden -->
+                        <div id="revisedFeedbackForm" class="feedback-form" style="display: none;">
+                            <h3>Rate the Revised Response</h3>
+                            
+                            <!-- Revised Rating sliders -->
+                            <div class="slider-group">
+                                <div class="rating-item">
+                                    <label for="revised_ai_clarity">AI Clarity (1-7):</label>
+                                    <input type="range" class="slider" id="revised_ai_clarity" name="revised_ai_clarity" min="1" max="7" value="4">
+                                    <span class="slider-value">4</span>
+                                </div>
+                                
+                                <div class="rating-item">
+                                    <label for="revised_paper_interpretation">Paper Interpretation (1-7):</label>
+                                    <input type="range" class="slider" id="revised_paper_interpretation" name="revised_paper_interpretation" min="1" max="7" value="4">
+                                    <span class="slider-value">4</span>
+                                </div>
+                                
+                                <div class="rating-item">
+                                    <label for="revised_topic_relevance">Topic Relevance (1-7):</label>
+                                    <input type="range" class="slider" id="revised_topic_relevance" name="revised_topic_relevance" min="1" max="7" value="4">
+                                    <span class="slider-value">4</span>
+                                </div>
+                                
+                                <div class="rating-item">
+                                    <label for="revised_response_depth">Response Depth (1-7):</label>
+                                    <input type="range" class="slider" id="revised_response_depth" name="revised_response_depth" min="1" max="7" value="4">
+                                    <span class="slider-value">4</span>
+                                </div>
+                                
+                                <div class="rating-item">
+                                    <label for="revised_citations_quality">Citations Quality (1-7):</label>
+                                    <input type="range" class="slider" id="revised_citations_quality" name="revised_citations_quality" min="1" max="7" value="4">
+                                    <span class="slider-value">4</span>
+                                </div>
+                                
+                                <div class="rating-item">
+                                    <label for="revised_ai_reasoning">AI Reasoning (1-7):</label>
+                                    <input type="range" class="slider" id="revised_ai_reasoning" name="revised_ai_reasoning" min="1" max="7" value="4">
+                                    <span class="slider-value">4</span>
+                                </div>
+                            </div>
+
+                            <!-- Revised Tag sections -->
+                            <div class="tag-sections">
+                                <h4>Revised Weakness / Issue Tags</h4>
+                                <div class="tag-options">
+                                    <label><input type="checkbox" name="revised_weakness" value="too_generic"> Too Generic</label>
+                                    <label><input type="checkbox" name="revised_weakness" value="missing_citation"> Missing Citation</label>
+                                    <label><input type="checkbox" name="revised_weakness" value="incorrect_inference"> Incorrect Inference</label>
+                                    <label><input type="checkbox" name="revised_weakness" value="misinterpreted_study"> Misinterpreted Study</label>
+                                    <label><input type="checkbox" name="revised_weakness" value="not_relevant"> Not Relevant</label>
+                                    <label><input type="checkbox" name="revised_weakness" value="lacks_depth"> Lacks Depth</label>
+                                    <label><input type="checkbox" name="revised_weakness" value="needs_simplification"> Needs Simplification</label>
+                                    <label><input type="checkbox" name="revised_weakness" value="repetitive"> Repetitive</label>
+                                    <label><input type="checkbox" name="revised_weakness" value="unverifiable_claim"> Unverifiable Claim</label>
+                                </div>
+                            </div>
+
+                            <div class="tag-sections">
+                                <h4>Revised Strength Tags</h4>
+                                <div class="tag-options">
+                                    <label><input type="checkbox" name="revised_strength" value="strong_explanation"> Strong Explanation</label>
+                                    <label><input type="checkbox" name="revised_strength" value="clear_reasoning"> Clear Reasoning</label>
+                                    <label><input type="checkbox" name="revised_strength" value="excellent_sources"> Excellent Sources</label>
+                                    <label><input type="checkbox" name="revised_strength" value="good_simplification"> Good Simplification</label>
+                                    <label><input type="checkbox" name="revised_strength" value="insightful"> Insightful</label>
+                                    <label><input type="checkbox" name="revised_strength" value="well_structured"> Well Structured</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="sidebar right-sidebar">
+            <h2>Cited Articles</h2>
+            <div id="os-panel" class="os-panel">
+                <div class="os-header">
+                  <a id="os-dev-link" href="#" target="_blank" rel="noopener">OpenSearch (dev)</a>
+                  <small id="os-count" class="os-count"></small>
+                </div>
+                <ol id="os-quick-list" class="os-quick-list"></ol>
+              </div>
+            <div class="cited-articles-container">
+                <div class="no-articles-message">
+                    <span class="icon">📚</span>
+                    <p>Articles will appear here after your search</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/static/js/main.js"></script>
+    <script type="module" src="/static/js/components/FeedbackHandler.js"></script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const qEl      = document.getElementById('searchInput');
+      const askBtn   = document.getElementById('searchButton');
+      const osLink   = document.getElementById('os-dev-link');
+      const osCount  = document.getElementById('os-count');
+      const osList   = document.getElementById('os-quick-list');
+    
+      if (!qEl || !askBtn || !osLink || !osCount || !osList) {
+        console.warn('OS quick panel: one or more elements missing; skipping fast-citations UI.');
+        return;
+      }
+    
+      const OS_SIZE_DEFAULT = 5;  // tweak if you want more/less
+      let inFlight = false;
+      let debTimer;
+    
+      function renderResults(json) {
+        const total = json?.total ?? 0;
+        const hits  = Array.isArray(json?.hits) ? json.hits : [];
+        osCount.textContent = total ? `${total} matches` : 'No matches';
+        osList.innerHTML = '';
+    
+        hits.forEach((h, i) => {
+          const li = document.createElement('li');
+          const title = h.title || '(no title)';
+          const journal = h.journal || '';
+          const year = h.year || '';
+          const score = typeof h.score === 'number' ? h.score.toFixed(3) : '';
+    
+          li.innerHTML = `
+            <div class="os-item">
+              <div class="os-title"><strong>${i + 1}. ${title}</strong></div>
+              <div class="os-meta">${journal}${journal && year ? ' — ' : ''}${year}${score ? ` — score ${score}` : ''}</div>
+              ${h.pmid ? `<a href="https://pubmed.ncbi.nlm.nih.gov/${h.pmid}/" target="_blank" rel="noopener">PubMed</a>` : ''}
+            </div>
+          `;
+          osList.appendChild(li);
+        });
+      }
+    
+      async function doOsSearch(query, size = OS_SIZE_DEFAULT) {
+        if (!query?.trim() || inFlight) return;
+        inFlight = true;
+    
+        // point the link to the nice list page in a new tab
+        const qs = new URLSearchParams({ q: query, size: String(size) }).toString();
+        osLink.href = `/os?q=${encodeURIComponent(query)}&size=${size}`;
+    
+        try {
+          const res = await fetch(`/api/os_search?${qs}`);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const json = await res.json();
+          renderResults(json);
+        } catch (err) {
+          console.error('OS quick panel error:', err);
+          osCount.textContent = 'Error';
+          osList.innerHTML = '';
+        } finally {
+          inFlight = false;
+        }
+      }
+    
+      function triggerOsSearchDebounced() {
+        clearTimeout(debTimer);
+        debTimer = setTimeout(() => doOsSearch(qEl.value, OS_SIZE_DEFAULT), 120);
+      }
+    
+      // Run when the user clicks Ask
+      askBtn.addEventListener('click', triggerOsSearchDebounced);
+    
+      // Also run when they press Enter in the input
+      qEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') triggerOsSearchDebounced();
+      });
+    });
+    </script>
+    
+  
