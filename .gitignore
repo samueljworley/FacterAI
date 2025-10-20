@@ -63,3 +63,7 @@ htmlcov/
 .coverage.*
 coverage.xml
 *.cover
+sagemind_env/
+venv/
+.venv/
+*.pyc
